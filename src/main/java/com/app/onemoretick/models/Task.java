@@ -30,8 +30,8 @@ public class Task {
     @Column(name = "end_date", nullable = false)
     private LocalDate endDate;
 
-    @Column(name = "id_done", nullable = false)
-    private Integer idDone;
+    @Column(name = "is_done", nullable = false)
+    private Integer isDone;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_category", nullable = false)

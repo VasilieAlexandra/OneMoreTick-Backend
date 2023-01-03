@@ -100,7 +100,7 @@ CREATE TABLE `task` (
   `description` varchar(100) DEFAULT NULL,
   `start_date` date NOT NULL,
   `end_date` date NOT NULL,
-  `id_done` tinyint NOT NULL DEFAULT '0',
+  `is_done` tinyint NOT NULL DEFAULT '0',
   `id_category` int NOT NULL,
   `id_user` int NOT NULL,
   PRIMARY KEY (`id`),
