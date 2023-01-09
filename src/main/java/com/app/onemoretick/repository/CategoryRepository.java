@@ -1,6 +1,6 @@
 package com.app.onemoretick.repository;
 
-import com.app.onemoretick.models.Category;
+import com.app.onemoretick.model.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

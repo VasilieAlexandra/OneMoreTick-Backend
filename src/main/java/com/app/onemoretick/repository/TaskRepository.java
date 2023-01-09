@@ -1,6 +1,6 @@
 package com.app.onemoretick.repository;
 
-import com.app.onemoretick.models.Task;
+import com.app.onemoretick.model.Task;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

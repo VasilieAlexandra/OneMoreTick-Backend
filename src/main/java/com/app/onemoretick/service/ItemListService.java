@@ -1,6 +1,6 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.models.ItemList;
+import com.app.onemoretick.model.ItemList;
 
 public interface ItemListService {
     ItemList addItemList(ItemList itemList);

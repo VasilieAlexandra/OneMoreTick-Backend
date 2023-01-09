@@ -1,6 +1,6 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.models.Task;
+import com.app.onemoretick.model.Task;
 
 public interface TaskService {
 Task addTask(Task task);

@@ -1,4 +1,4 @@
-package com.app.onemoretick.models;
+package com.app.onemoretick.model;
 
 import jakarta.persistence.*;
 import lombok.*;
@@ -12,8 +12,8 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "list")
-public class List {
+@Table(name = "category")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -22,7 +22,8 @@ public class List {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "idList")
-    private Set<ItemList> itemLists = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "idCategory")
+    private Set<Task> tasks = new LinkedHashSet<>();
+
 
 }

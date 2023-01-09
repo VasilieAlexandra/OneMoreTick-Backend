@@ -1,4 +1,4 @@
-package com.app.onemoretick.models;
+package com.app.onemoretick.model;
 
 import jakarta.persistence.*;
 import lombok.*;

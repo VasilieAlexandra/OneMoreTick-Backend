@@ -1,7 +1,6 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.models.Category;
-import com.app.onemoretick.models.User;
+import com.app.onemoretick.model.Category;
 import com.app.onemoretick.repository.CategoryRepository;
 import com.app.onemoretick.service.CategoryService;
 import org.springframework.stereotype.Service;

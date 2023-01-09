@@ -1,6 +1,6 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.models.List;
+import com.app.onemoretick.model.List;
 import com.app.onemoretick.repository.ListRepository;
 import com.app.onemoretick.service.ListService;
 import org.springframework.stereotype.Service;
@@ -32,6 +32,7 @@ public class ListServiceImpl implements ListService {
         List listFromDb = getById(list.getId());
         listFromDb.setName(list.getName());
         listFromDb.setItemLists(list.getItemLists());
+        listFromDb.setIdUserList(list.getIdUserList());
         return listRepository.save(listFromDb);
     }
 

@@ -1,6 +1,6 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.models.Category;
+import com.app.onemoretick.model.Category;
 
 public interface CategoryService {
     Category addCategory(Category category);
