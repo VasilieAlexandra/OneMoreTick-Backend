@@ -5,6 +5,7 @@ import com.app.onemoretick.repository.CategoryRepository;
 import com.app.onemoretick.service.CategoryService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -39,5 +40,10 @@ public class CategoryServiceImpl implements CategoryService {
     public void deleteUser(Integer id) {
         Category category = getById(id);
         categoryRepository.delete(category);
+    }
+
+    @Override
+    public List<Category> getAllCategory() {
+        return categoryRepository.findAll();
     }
 }
