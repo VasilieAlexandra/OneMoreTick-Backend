@@ -31,6 +31,6 @@ public class User {
     private Set<Task> tasks = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUserList")
-    private Set<List> lists = new LinkedHashSet<>();
+    private Set<ShoppingList> shoppingLists = new LinkedHashSet<>();
 
 }

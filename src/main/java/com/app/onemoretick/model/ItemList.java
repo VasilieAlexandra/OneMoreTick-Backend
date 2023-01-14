@@ -21,7 +21,7 @@ public class ItemList {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_list", nullable = false)
-    private List idList;
+    private ShoppingList idShoppingList;
 
 
 }

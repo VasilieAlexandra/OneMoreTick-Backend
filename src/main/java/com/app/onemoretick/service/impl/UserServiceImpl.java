@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
             userFromDb.setEmail(user.getEmail());
             userFromDb.setPassword(user.getPassword());
             userFromDb.setTasks(user.getTasks());
-            userFromDb.setLists(user.getLists());
+            userFromDb.setShoppingLists(user.getShoppingLists());
             return userRepository.save(userFromDb);
         }
         return null;

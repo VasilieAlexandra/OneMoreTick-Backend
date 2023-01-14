@@ -1,10 +1,14 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.model.List;
+import com.app.onemoretick.model.ShoppingList;
+import com.app.onemoretick.model.User;
+
+import java.util.List;
 
 public interface ListService {
-    List addList(List list);
-    List getById(Integer id);
-    List updateList(List list);
+    ShoppingList addList(ShoppingList shoppingList);
+    ShoppingList getById(Integer id);
+    ShoppingList updateList(ShoppingList shoppingList);
     void deleteList(Integer id);
+    List<ShoppingList> getAllForUser(User user);
 }

@@ -31,7 +31,7 @@ public class ItemListServiceImpl implements ItemListService{
     public ItemList updateItemList(ItemList itemList) {
         ItemList itemListFromDb = getById(itemList.getId());
         itemListFromDb.setName(itemList.getName());
-        itemListFromDb.setIdList(itemList.getIdList());
+        itemListFromDb.setIdShoppingList(itemList.getIdShoppingList());
         return itemListRepository.save(itemListFromDb);
     }
     @Override

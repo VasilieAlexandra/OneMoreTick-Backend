@@ -1,10 +1,12 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.model.List;
+import com.app.onemoretick.model.ShoppingList;
+import com.app.onemoretick.model.User;
 import com.app.onemoretick.repository.ListRepository;
 import com.app.onemoretick.service.ListService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -17,28 +19,33 @@ public class ListServiceImpl implements ListService {
     }
 
     @Override
-    public List addList(List list) {
-        return listRepository.save(list);
+    public ShoppingList addList(ShoppingList shoppingList) {
+        return listRepository.save(shoppingList);
     }
 
     @Override
-    public List getById(Integer id) {
-        Optional<List> listOptional = listRepository.findById(id);
+    public ShoppingList getById(Integer id) {
+        Optional<ShoppingList> listOptional = listRepository.findById(id);
         return listOptional.orElse(null);
     }
 
     @Override
-    public List updateList(List list) {
-        List listFromDb = getById(list.getId());
-        listFromDb.setName(list.getName());
-        listFromDb.setItemLists(list.getItemLists());
-        listFromDb.setIdUserList(list.getIdUserList());
-        return listRepository.save(listFromDb);
+    public ShoppingList updateList(ShoppingList shoppingList) {
+        ShoppingList shoppingListFromDb = getById(shoppingList.getId());
+        shoppingListFromDb.setName(shoppingList.getName());
+        shoppingListFromDb.setItemLists(shoppingList.getItemLists());
+        shoppingListFromDb.setIdUserList(shoppingList.getIdUserList());
+        return listRepository.save(shoppingListFromDb);
     }
 
     @Override
     public void deleteList(Integer id) {
-        List list = getById(id);
-        listRepository.delete(list);
+        ShoppingList shoppingList = getById(id);
+        listRepository.delete(shoppingList);
+    }
+
+    @Override
+    public List<ShoppingList> getAllForUser(User user) {
+        return listRepository.getAllByIdUserList(user);
     }
 }

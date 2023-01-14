@@ -1,6 +1,7 @@
 package com.app.onemoretick.service;
 
 import com.app.onemoretick.model.Task;
+import com.app.onemoretick.model.User;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ Task addTask(Task task);
 Task getById(Integer id);
 Task updateTask(Task task);
 void deleteTask(Integer id);
-List<Task> getAllTasksForUser(Integer user_id);
+List<Task> getAllTasksForUser(User user);
 }

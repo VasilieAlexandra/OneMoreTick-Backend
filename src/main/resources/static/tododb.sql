@@ -51,7 +51,7 @@ CREATE TABLE `item_list` (
   `id_list` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_list_idx` (`id_list`),
-  CONSTRAINT `id_list` FOREIGN KEY (`id_list`) REFERENCES `list` (`id`)
+  CONSTRAINT `id_list` FOREIGN KEY (`id_list`) REFERENCES `shoppingList` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,13 +65,13 @@ LOCK TABLES `item_list` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `list`
+-- Table structure for table `shoppingList`
 --
 
-DROP TABLE IF EXISTS `list`;
+DROP TABLE IF EXISTS `shoppingList`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `list` (
+CREATE TABLE `shoppingList` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
@@ -79,12 +79,12 @@ CREATE TABLE `list` (
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `list`
+-- Dumping data for table `shoppingList`
 --
 
-LOCK TABLES `list` WRITE;
-/*!40000 ALTER TABLE `list` DISABLE KEYS */;
-/*!40000 ALTER TABLE `list` ENABLE KEYS */;
+LOCK TABLES `shoppingList` WRITE;
+/*!40000 ALTER TABLE `shoppingList` DISABLE KEYS */;
+/*!40000 ALTER TABLE `shoppingList` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --

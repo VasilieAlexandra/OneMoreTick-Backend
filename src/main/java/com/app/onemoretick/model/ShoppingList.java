@@ -14,7 +14,7 @@ import java.util.Set;
 @Setter
 @Entity
 @Table(name = "list")
-public class List {
+public class ShoppingList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,7 +23,7 @@ public class List {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "idList")
+    @OneToMany(mappedBy = "idShoppingList")
     private Set<ItemList> itemLists = new LinkedHashSet<>();
 
     @NotNull

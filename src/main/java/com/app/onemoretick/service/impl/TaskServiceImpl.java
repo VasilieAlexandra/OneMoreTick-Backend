@@ -1,6 +1,7 @@
 package com.app.onemoretick.service.impl;
 
 import com.app.onemoretick.model.Task;
+import com.app.onemoretick.model.User;
 import com.app.onemoretick.repository.TaskRepository;
 import com.app.onemoretick.service.TaskService;
 import org.springframework.stereotype.Service;
@@ -49,7 +50,7 @@ public class TaskServiceImpl implements TaskService {
     }
 
     @Override
-    public List<Task> getAllTasksForUser(Integer user_id) {
-        return taskRepository.getAllByIdUser(user_id);
+    public List<Task> getAllTasksForUser(User user) {
+        return taskRepository.getAllByIdUser(user);
     }
 }

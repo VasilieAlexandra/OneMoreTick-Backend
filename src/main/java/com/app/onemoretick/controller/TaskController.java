@@ -24,7 +24,7 @@ public class TaskController {
 
     @GetMapping
     public ResponseEntity<List<Task>> getAllTasksForUser(@PathVariable(name = "user_id") Integer id){
-        List<Task> tasksForUser = taskService.getAllTasksForUser(id);
+        List<Task> tasksForUser = taskService.getAllTasksForUser(userService.getById(id));
         if(tasksForUser != null)
             return new ResponseEntity<>(tasksForUser, HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
