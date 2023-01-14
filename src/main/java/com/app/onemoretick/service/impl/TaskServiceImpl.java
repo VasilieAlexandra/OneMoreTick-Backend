@@ -5,6 +5,7 @@ import com.app.onemoretick.repository.TaskRepository;
 import com.app.onemoretick.service.TaskService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -45,5 +46,10 @@ public class TaskServiceImpl implements TaskService {
     public void deleteTask(Integer id) {
         Task task = getById(id);
         taskRepository.delete(task);
+    }
+
+    @Override
+    public List<Task> getAllTasksForUser(Integer user_id) {
+        return taskRepository.getAllByIdUser(user_id);
     }
 }
