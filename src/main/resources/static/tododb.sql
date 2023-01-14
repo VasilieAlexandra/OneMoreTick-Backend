@@ -51,7 +51,7 @@ CREATE TABLE `item_list` (
   `id_list` int NOT NULL,
   PRIMARY KEY (`id`),
   KEY `id_list_idx` (`id_list`),
-  CONSTRAINT `id_list` FOREIGN KEY (`id_list`) REFERENCES `shoppingList` (`id`)
+  CONSTRAINT `id_list` FOREIGN KEY (`id_list`) REFERENCES `list` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -65,26 +65,29 @@ LOCK TABLES `item_list` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `shoppingList`
+-- Table structure for table `list`
 --
 
-DROP TABLE IF EXISTS `shoppingList`;
+DROP TABLE IF EXISTS `list`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shoppingList` (
+CREATE TABLE `list` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(45) NOT NULL,
-  PRIMARY KEY (`id`)
+  `id_user_list` int NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `id_user_idx` (`id_user_list`),
+  CONSTRAINT `id_user_list` FOREIGN KEY (`id_user_list`) REFERENCES `user` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `shoppingList`
+-- Dumping data for table `list`
 --
 
-LOCK TABLES `shoppingList` WRITE;
-/*!40000 ALTER TABLE `shoppingList` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shoppingList` ENABLE KEYS */;
+LOCK TABLES `list` WRITE;
+/*!40000 ALTER TABLE `list` DISABLE KEYS */;
+/*!40000 ALTER TABLE `list` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -132,7 +135,7 @@ CREATE TABLE `user` (
   `email` varchar(45) NOT NULL,
   `password` varchar(45) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -141,6 +144,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
+INSERT INTO `user` VALUES (1,'user@example.com','string'),(2,'ale@example.com','123456'),(3,'ale@example','string'),(4,'ale@yahoo','string'),(5,'ale@yahoo.com','string');
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -153,4 +157,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-01-03 12:05:56
+-- Dump completed on 2023-01-14 14:43:08

@@ -86,23 +86,23 @@ paths:
         '400':
           description: Bad request
         '404':
-          description: User not found 
+          description: User not found
 
-  /user/{user_id}/tasks:
+  /tasks/{user_id}:
     post:
       tags:
         - tasks
       summary: Add a task
       description: ''
       operationId: addTask
-      parameters: 
+      parameters:
         - name: user_id
           in: path
           description: user id
           required: true
           schema:
             type: integer
-            format: int64      
+            format: int64
       requestBody:
         content:
           application/json:
@@ -125,7 +125,7 @@ paths:
       summary: Find all user's tasks
       description: Returns a list of tasks
       operationId: getTasks
-      parameters: 
+      parameters:
         - name: user_id
           in: path
           description: user id
@@ -162,7 +162,7 @@ paths:
             schema:
               $ref: '#/components/schemas/Task'
         description: Object that needs to be updated
-        required: true                  
+        required: true
       responses:
         '200':
           content:
@@ -175,7 +175,7 @@ paths:
         '404':
           description: Task not found
 
-  /user/{user_id}/tasks/{task_id}:
+  /tasks/{user_id}/{task_id}:
     get:
       tags:
         - tasks
@@ -239,23 +239,23 @@ paths:
         '400':
           description: Bad request
         '404':
-          description: Task not found    
-          
-  /user/{user_id}/list:
+          description: Task not found
+
+  /lists/{user_id}:
     post:
       tags:
         - lists
       summary: Add a list
       description: ''
       operationId: addList
-      parameters: 
+      parameters:
         - name: user_id
           in: path
           description: user id
           required: true
           schema:
             type: integer
-            format: int64      
+            format: int64
       requestBody:
         content:
           application/json:
@@ -278,7 +278,7 @@ paths:
       summary: Find all user's list
       description: Returns a list of lists
       operationId: getLists
-      parameters: 
+      parameters:
         - name: user_id
           in: path
           description: user id
@@ -315,7 +315,7 @@ paths:
             schema:
               $ref: '#/components/schemas/List'
         description: Object that needs to be updated
-        required: true                  
+        required: true
       responses:
         '200':
           content:
@@ -328,7 +328,7 @@ paths:
         '404':
           description: List not found
 
-  /user/{user_id}/lists/{list_id}:
+  /lists/{user_id}/{list_id}:
     get:
       tags:
         - lists
@@ -392,15 +392,15 @@ paths:
         '400':
           description: Bad request
         '404':
-          description: List not found   
-  /user/{user_id}/lists/{list_id}/items:      
+          description: List not found
+  /lists/{user_id}/{list_id}/items:
     post:
       tags:
         - items
       summary: Add item to list
       description: ''
       operationId: addItemList
-      parameters: 
+      parameters:
         - name: user_id
           in: path
           description: user id
@@ -414,7 +414,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64    
+            format: int64
       requestBody:
         content:
           application/json:
@@ -483,14 +483,14 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64    
+            format: int64
       requestBody:
         content:
           application/json:
             schema:
               $ref: '#/components/schemas/ItemList'
         description: Object that needs to be updated
-        required: true                  
+        required: true
       responses:
         '200':
           content:
@@ -502,7 +502,7 @@ paths:
           description: Bad request
         '404':
           description: Item not found
-  /user/{user_id}/lists/{list_id}/items/{item_id}:
+  /lists/{user_id}/{list_id}/items/{item_id}:
     get:
       tags:
         - items
@@ -569,7 +569,7 @@ paths:
           required: true
           schema:
             type: integer
-            format: int64    
+            format: int64
       responses:
         '200':
           content:
@@ -580,8 +580,8 @@ paths:
         '400':
           description: Bad request
         '404':
-          description: Item not found 
-          
+          description: Item not found
+
   /categories:
     get:
       tags:
@@ -711,7 +711,7 @@ components:
     Items:
       type: array
       items:
-        $ref: '#/components/schemas/ItemList'          
+        $ref: '#/components/schemas/ItemList'
     ItemList:
       type: object
       properties:
