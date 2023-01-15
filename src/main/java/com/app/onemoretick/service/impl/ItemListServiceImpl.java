@@ -1,10 +1,12 @@
 package com.app.onemoretick.service.impl;
 
 import com.app.onemoretick.model.ItemList;
+import com.app.onemoretick.model.ShoppingList;
 import com.app.onemoretick.repository.ItemListRepository;
 import com.app.onemoretick.service.ItemListService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -38,6 +40,11 @@ public class ItemListServiceImpl implements ItemListService{
     public void deleteItemList(Integer id) {
         ItemList itemList = getById(id);
         itemListRepository.delete(itemList);
+    }
+
+    @Override
+    public List<ItemList> getAllByShoppingList(ShoppingList shoppingList) {
+        return itemListRepository.getAllByIdShoppingList(shoppingList);
     }
 }
 
