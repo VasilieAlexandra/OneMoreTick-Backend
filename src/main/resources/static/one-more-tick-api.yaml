@@ -393,7 +393,7 @@ paths:
           description: Bad request
         '404':
           description: List not found
-  /lists/{user_id}/{list_id}/items:
+  /lists/{list_id}/items:
     post:
       tags:
         - items
@@ -401,13 +401,6 @@ paths:
       description: ''
       operationId: addItemList
       parameters:
-        - name: user_id
-          in: path
-          description: user id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: list_id
           in: path
           description: list id
@@ -438,13 +431,6 @@ paths:
       description: ''
       operationId: getListItems
       parameters:
-        - name: user_id
-          in: path
-          description: user id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: list_id
           in: path
           description: list id
@@ -470,13 +456,6 @@ paths:
       description: ''
       operationId: updateItemList
       parameters:
-        - name: user_id
-          in: path
-          description: user id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: list_id
           in: path
           description: list id
@@ -502,7 +481,7 @@ paths:
           description: Bad request
         '404':
           description: Item not found
-  /lists/{user_id}/{list_id}/items/{item_id}:
+  /lists/{list_id}/items/{item_id}:
     get:
       tags:
         - items
@@ -510,13 +489,6 @@ paths:
       description: ''
       operationId: getItemListById
       parameters:
-        - name: user_id
-          in: path
-          description: user id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: list_id
           in: path
           description: list id
@@ -549,13 +521,6 @@ paths:
       description: ''
       operationId: deteleItemList
       parameters:
-        - name: user_id
-          in: path
-          description: user id
-          required: true
-          schema:
-            type: integer
-            format: int64
         - name: list_id
           in: path
           description: task id
