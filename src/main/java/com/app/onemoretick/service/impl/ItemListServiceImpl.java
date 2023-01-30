@@ -1,7 +1,7 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.model.ItemList;
-import com.app.onemoretick.model.ShoppingList;
+import com.app.onemoretick.model.entity.ItemList;
+import com.app.onemoretick.model.entity.ShoppingList;
 import com.app.onemoretick.repository.ItemListRepository;
 import com.app.onemoretick.service.ItemListService;
 import org.springframework.stereotype.Service;

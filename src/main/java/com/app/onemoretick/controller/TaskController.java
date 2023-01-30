@@ -1,8 +1,12 @@
 package com.app.onemoretick.controller;
 
-import com.app.onemoretick.model.Task;
+import com.app.onemoretick.model.dto.TaskDto;
+import com.app.onemoretick.model.entity.Task;
 import com.app.onemoretick.service.TaskService;
 import com.app.onemoretick.service.UserService;
+import jakarta.validation.Valid;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -16,6 +20,8 @@ public class TaskController {
 
     private final TaskService taskService;
     private final UserService userService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     public TaskController(TaskService taskService, UserService userService) {
         this.taskService = taskService;
@@ -23,47 +29,55 @@ public class TaskController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Task>> getAllTasksForUser(@PathVariable(name = "user_id") Integer id){
+    public ResponseEntity<List<TaskDto>> getAllTasksForUser(@PathVariable(name = "user_id") Integer id){
         List<Task> tasksForUser = taskService.getAllTasksForUser(userService.getById(id));
-        if(tasksForUser != null)
-            return new ResponseEntity<>(tasksForUser, HttpStatus.OK);
+        if(tasksForUser != null) {
+            List<TaskDto> taskDtos = tasksForUser.stream()
+                    .map(t -> modelMapper.map(t, TaskDto.class))
+                    .toList();
+            return new ResponseEntity<>(taskDtos, HttpStatus.OK);
+        }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PostMapping
-    public ResponseEntity<Task> addTaskForUser(@PathVariable(name = "user_id") Integer id, @RequestBody Task newTask){
+    public ResponseEntity<TaskDto> addTaskForUser(@PathVariable(name = "user_id") Integer id, @Valid @RequestBody TaskDto newTaskRequest){
 
-        newTask.setIdUser(userService.getById(id));
-        Task task = taskService.addTask(newTask);
+        newTaskRequest.setIdUser(id);
+        Task task = taskService.addTask(modelMapper.map(newTaskRequest, Task.class));
         if(task != null)
-            return new ResponseEntity<>(task, HttpStatus.OK);
+            return new ResponseEntity<>(modelMapper.map(task, TaskDto.class), HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @PutMapping
-    public ResponseEntity<Task> updateUserTask(@PathVariable(name = "user_id") Integer id,@RequestBody Task updatedTask){
+    public ResponseEntity<TaskDto> updateUserTask(@PathVariable(name = "user_id") Integer id, @Valid @RequestBody TaskDto updatedTaskRequest){
 
-        updatedTask.setIdUser(userService.getById(id));
-        Task task = taskService.updateTask(updatedTask);
+        updatedTaskRequest.setIdUser(id);
+        Task task = taskService.updateTask(modelMapper.map(updatedTaskRequest, Task.class));
+
         if(task != null)
-            return new ResponseEntity<>(task, HttpStatus.OK);
+            return new ResponseEntity<>(modelMapper.map(task, TaskDto.class), HttpStatus.OK);
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @GetMapping("/{task_id}")
-    public ResponseEntity<Task> getTaskForUser(@PathVariable(name = "user_id") Integer id, @PathVariable Integer task_id){
+    public ResponseEntity<TaskDto> getTaskForUser(@PathVariable(name = "user_id") Integer id, @PathVariable Integer task_id){
         Task taskForUser = taskService.getById(task_id);
-        if(taskForUser != null && Objects.equals(taskForUser.getIdUser().getId(), id))
-            return new ResponseEntity<>(taskForUser, HttpStatus.OK);
+
+        if(taskForUser != null && Objects.equals(taskForUser.getIdUser().getId(), id)) {
+            TaskDto taskDto = modelMapper.map(taskForUser, TaskDto.class);
+            return new ResponseEntity<>(taskDto, HttpStatus.OK);
+        }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }
 
     @DeleteMapping("/{task_id}")
-    public ResponseEntity<Task> deleteTaskForUser(@PathVariable(name = "user_id") Integer id, @PathVariable Integer task_id){
+    public ResponseEntity<TaskDto> deleteTaskForUser(@PathVariable(name = "user_id") Integer id, @PathVariable Integer task_id){
         Task taskForUser = taskService.getById(task_id);
         if(taskForUser != null && Objects.equals(taskForUser.getIdUser().getId(), id)) {
             taskService.deleteTask(task_id);
-            return new ResponseEntity<>(taskForUser, HttpStatus.OK);
+            return new ResponseEntity<>(modelMapper.map(taskForUser, TaskDto.class), HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
     }

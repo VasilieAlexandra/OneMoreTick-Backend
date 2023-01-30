@@ -1,4 +1,7 @@
-package com.app.onemoretick.model;
+package com.app.onemoretick.model.entity;
+import com.app.onemoretick.model.entity.ShoppingList;
+import com.app.onemoretick.model.entity.Task;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
@@ -28,6 +31,7 @@ public class User {
     private String password;
 
     @OneToMany(mappedBy = "idUser")
+    @JsonIgnore
     private Set<Task> tasks = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUserList")

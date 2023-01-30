@@ -1,6 +1,6 @@
 package com.app.onemoretick.controller;
 
-import com.app.onemoretick.model.ItemList;
+import com.app.onemoretick.model.entity.ItemList;
 import com.app.onemoretick.service.ItemListService;
 import com.app.onemoretick.service.ListService;
 import org.springframework.http.HttpStatus;

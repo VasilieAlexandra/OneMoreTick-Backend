@@ -1,7 +1,7 @@
-package com.app.onemoretick.model;
+package com.app.onemoretick.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.util.LinkedHashSet;
@@ -13,8 +13,9 @@ import java.util.Set;
 @Getter
 @Setter
 @Entity
-@Table(name = "list")
-public class ShoppingList {
+@Table(name = "category")
+@ToString
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
@@ -23,12 +24,10 @@ public class ShoppingList {
     @Column(name = "name", nullable = false, length = 45)
     private String name;
 
-    @OneToMany(mappedBy = "idShoppingList")
-    private Set<ItemList> itemLists = new LinkedHashSet<>();
+    @OneToMany(mappedBy = "idCategory")
+    @JsonIgnore
+    @ToString.Exclude
+    private Set<Task> tasks = new LinkedHashSet<>();
 
-    @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_user_list", nullable = false)
-    private User idUserList;
 
 }

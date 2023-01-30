@@ -1,6 +1,6 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.model.User;
+import com.app.onemoretick.model.entity.User;
 import com.app.onemoretick.repository.UserRepository;
 import com.app.onemoretick.service.UserService;
 import org.springframework.stereotype.Service;

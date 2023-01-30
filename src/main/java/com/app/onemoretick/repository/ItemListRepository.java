@@ -1,7 +1,7 @@
 package com.app.onemoretick.repository;
 
-import com.app.onemoretick.model.ItemList;
-import com.app.onemoretick.model.ShoppingList;
+import com.app.onemoretick.model.entity.ItemList;
+import com.app.onemoretick.model.entity.ShoppingList;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.model.ShoppingList;
-import com.app.onemoretick.model.User;
+import com.app.onemoretick.model.entity.ShoppingList;
+import com.app.onemoretick.model.entity.User;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.app.onemoretick.service.impl;
 
-import com.app.onemoretick.model.Task;
-import com.app.onemoretick.model.User;
+import com.app.onemoretick.model.entity.Task;
+import com.app.onemoretick.model.entity.User;
 import com.app.onemoretick.repository.TaskRepository;
 import com.app.onemoretick.service.TaskService;
 import org.springframework.stereotype.Service;

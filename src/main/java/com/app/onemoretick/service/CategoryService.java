@@ -1,6 +1,6 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.model.Category;
+import com.app.onemoretick.model.entity.Category;
 
 import java.util.List;
 

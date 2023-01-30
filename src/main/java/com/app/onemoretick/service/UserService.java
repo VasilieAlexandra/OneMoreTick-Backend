@@ -1,6 +1,6 @@
 package com.app.onemoretick.service;
 
-import com.app.onemoretick.model.User;
+import com.app.onemoretick.model.entity.User;
 
 public interface UserService {
     User addUser(User user);

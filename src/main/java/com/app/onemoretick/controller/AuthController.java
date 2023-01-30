@@ -1,6 +1,6 @@
 package com.app.onemoretick.controller;
 
-import com.app.onemoretick.model.User;
+import com.app.onemoretick.model.entity.User;
 import com.app.onemoretick.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
