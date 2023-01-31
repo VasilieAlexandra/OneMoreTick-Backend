@@ -1,4 +1,7 @@
 package com.app.onemoretick.model.dto;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 import java.time.LocalDate;
@@ -8,31 +11,31 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @Builder
 public class TaskDto {
+
+    @JsonProperty("id")
     private Integer id;
+    @NotNull
+    @JsonProperty("title")
     private String title;
+
+    @JsonProperty("description")
     private String description;
+    @NotNull
+    @JsonProperty("startDate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate startDate;
+    @NotNull
+    @JsonProperty("endDate")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate endDate;
+    @NotNull
+    @JsonProperty("isDone")
     private Integer isDone;
+    @NotNull
+    @JsonProperty("idCategory")
     private Integer idCategory;
+    @NotNull
+    @JsonProperty("idUser")
     private Integer idUser;
 
-//    private TaskDto convertToDto(Task post) {
-//        TaskDto postDto = modelMapper.map(post, TaskDto.class);
-//
-//        return postDto;
-//    }
-//
-//    private Post convertToEntity(PostDto postDto) throws ParseException {
-//        Post post = modelMapper.map(postDto, Post.class);
-//        post.setSubmissionDate(postDto.getSubmissionDateConverted(
-//                userService.getCurrentUser().getPreference().getTimezone()));
-//
-//        if (postDto.getId() != null) {
-//            Post oldPost = postService.getPostById(postDto.getId());
-//            post.setRedditID(oldPost.getRedditID());
-//            post.setSent(oldPost.isSent());
-//        }
-//        return post;
-//    }
 }

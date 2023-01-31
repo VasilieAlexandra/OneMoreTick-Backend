@@ -28,12 +28,11 @@ public class Task {
     @Column(name = "description", length = 100)
     private String description;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "start_date", nullable = false)
     private LocalDate startDate;
 
-    @JsonFormat(pattern="yyyy-MM-dd")
     @Column(name = "end_date", nullable = false)
+    @Temporal(TemporalType.DATE)
     private LocalDate endDate;
 
     @Column(name = "is_done", nullable = false)

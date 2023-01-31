@@ -1,9 +1,6 @@
 package com.app.onemoretick.model.entity;
-import com.app.onemoretick.model.entity.ShoppingList;
-import com.app.onemoretick.model.entity.Task;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import lombok.*;
 
@@ -22,7 +19,7 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
-    @Email
+
     @Column(name = "email", nullable = false, length = 45)
     private String email;
 
