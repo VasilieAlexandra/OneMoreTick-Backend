@@ -17,7 +17,7 @@ import java.util.List;
 import java.util.Objects;
 
 @RestController
-@RequestMapping("/lists/{user_id}/")
+@RequestMapping("/lists/{user_id}")
 public class ListController
 {
     private final ListService listService;

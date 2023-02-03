@@ -32,6 +32,7 @@ public class User {
     private Set<Task> tasks = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUserList")
+    @JsonIgnore
     private Set<ShoppingList> shoppingLists = new LinkedHashSet<>();
 
 }

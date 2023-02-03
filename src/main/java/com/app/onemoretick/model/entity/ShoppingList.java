@@ -1,5 +1,6 @@
 package com.app.onemoretick.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -24,11 +25,13 @@ public class ShoppingList {
     private String name;
 
     @OneToMany(mappedBy = "idShoppingList")
+    @JsonIgnore
     private Set<ItemList> itemLists = new LinkedHashSet<>();
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_user_list", nullable = false)
+    @JsonIgnore
     private User idUserList;
 
 }

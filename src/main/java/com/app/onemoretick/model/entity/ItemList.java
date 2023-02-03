@@ -1,5 +1,6 @@
 package com.app.onemoretick.model.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class ItemList {
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "id_list", nullable = false)
+    @JsonIgnore
     private ShoppingList idShoppingList;
 
 
