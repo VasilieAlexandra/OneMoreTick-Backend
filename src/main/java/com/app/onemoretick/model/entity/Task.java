@@ -1,5 +1,6 @@
 package com.app.onemoretick.model.entity;
 
+import com.app.onemoretick.model.validation.ValidStartDate;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -29,6 +30,7 @@ public class Task {
     private String description;
 
     @Column(name = "start_date", nullable = false)
+    @ValidStartDate
     private LocalDate startDate;
 
     @Column(name = "end_date", nullable = false)
