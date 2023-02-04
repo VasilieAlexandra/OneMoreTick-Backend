@@ -39,14 +39,14 @@ public class Task {
     private Integer isDone;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_category", nullable = false)
+    @JoinColumn(name = "id_category", nullable = false,updatable = false)
     @ToString.Exclude
     @JsonIgnoreProperties(value = {"applications", "hibernateLazyInitializer"})
     private Category idCategory;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIgnore
-    @JoinColumn(name = "id_user", nullable = false)
+    @JoinColumn(name = "id_user", nullable = false,updatable = false)
     @ToString.Exclude
     private User idUser;
 

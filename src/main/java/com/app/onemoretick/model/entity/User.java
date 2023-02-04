@@ -29,10 +29,12 @@ public class User {
 
     @OneToMany(mappedBy = "idUser")
     @JsonIgnore
+    @Column(nullable = true)
     private Set<Task> tasks = new LinkedHashSet<>();
 
     @OneToMany(mappedBy = "idUserList")
     @JsonIgnore
+    @Column(nullable = true)
     private Set<ShoppingList> shoppingLists = new LinkedHashSet<>();
 
 }

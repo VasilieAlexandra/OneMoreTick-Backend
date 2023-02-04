@@ -21,7 +21,7 @@ public class ItemList {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_list", nullable = false)
+    @JoinColumn(name = "id_list", nullable = false,updatable = false)
     @JsonIgnore
     private ShoppingList idShoppingList;
 

@@ -25,12 +25,13 @@ public class ShoppingList {
     private String name;
 
     @OneToMany(mappedBy = "idShoppingList")
+    @Column(nullable = true)
     @JsonIgnore
     private Set<ItemList> itemLists = new LinkedHashSet<>();
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "id_user_list", nullable = false)
+    @JoinColumn(name = "id_user_list", nullable = false,updatable = false)
     @JsonIgnore
     private User idUserList;
 

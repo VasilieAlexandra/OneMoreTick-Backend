@@ -26,6 +26,7 @@ public class Category {
 
     @OneToMany(mappedBy = "idCategory")
     @JsonIgnore
+    @Column(nullable = true)
     @ToString.Exclude
     private Set<Task> tasks = new LinkedHashSet<>();
 
