@@ -1,7 +1,7 @@
 package com.app.onemoretick.model.entity;
 
+import com.app.onemoretick.model.validation.ValidEndDate;
 import com.app.onemoretick.model.validation.ValidStartDate;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
@@ -16,6 +16,13 @@ import java.time.LocalDate;
 @Setter
 @Entity
 @ToString
+@ValidEndDate.List({
+        @ValidEndDate(
+                s = "startDate",
+                e = "endDate",
+                message = "End date cannot before be start date!"
+        )
+})
 @Table(name = "task")
 public class Task {
     @Id

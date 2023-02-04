@@ -18,11 +18,25 @@ public class ValidStartDateValidator implements ConstraintValidator<ValidStartDa
     }
 
     @Override
-    public boolean isValid(LocalDate startDate, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(LocalDate startDate, ConstraintValidatorContext context) {
         Instant instant= Instant.now();
         LocalDate today = instant.atOffset(ZoneOffset.UTC).toLocalDate();
-        if (startDate != null)
-            return startDate.isAfter(today);
-        return false;
+
+        boolean isValid = false;
+
+        if(startDate!=null)
+            isValid = startDate.isAfter(today) || startDate.equals(today);
+
+
+        if (!isValid) {
+            context.disableDefaultConstraintViolation();
+            assert startDate != null;
+            context
+                    .buildConstraintViolationWithTemplate(message)
+                    .addPropertyNode(startDate.toString())
+                    .addConstraintViolation();
+        }
+        return isValid;
+
     }
 }
